@@ -12,11 +12,20 @@ dependencies:
     sdk: flutter
   velocity_x: ^3.6.0
   youtube_explode_dart: ^1.12.3
+  path: ^1.8.2
+  path_provider: ^2.0.11
+  cross_file: ^0.3.3+2
 
 dev_dependencies:
   flutter_lints: 2.0.1
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: "^0.11.0"
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/logo.png"
 
 flutter:
   uses-material-design: true

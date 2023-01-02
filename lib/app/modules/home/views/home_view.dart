@@ -23,49 +23,60 @@ class HomeView extends GetView<HomeController> {
             title: const Text('YouTube Downloader'),
             centerTitle: false,
           ),
-          body: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Form(
-              key: controller.formKey,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  "Enter Video URL".text.make(),
-                  20.heightBox,
-                  TextFormField(
-                    focusNode: controller.node,
-                    validator: (val) => controller.checkValidUrl(val),
-                    controller: controller.urlController,
-                    decoration: const InputDecoration(
-                        border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10)))),
+          body: Obx(
+            () => Stack(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Form(
+                    key: controller.formKey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        "Enter Video URL".text.make(),
+                        20.heightBox,
+                        TextFormField(
+                          focusNode: controller.node,
+                          validator: (val) => controller.checkValidUrl(val),
+                          controller: controller.urlController,
+                          decoration: const InputDecoration(
+                              border: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)))),
+                        ),
+                        20.heightBox,
+                        // GetX<HomeController>(
+                        //builder: (controller) =>
+                        Center(
+                            child: MaterialButton(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          color: Theme.of(context).primaryColor,
+                          onPressed: () => controller.downloadVideo(),
+                          //controller.onDownloadVideoTapped,
+                          child: "Download Video".text.white.medium.make(),
+                        )),
+                        //),
+                        20.heightBox,
+                        Center(
+                            child: MaterialButton(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          color: Theme.of(context).primaryColor,
+                          onPressed: () {},
+                          child: "Download Audio".text.white.medium.make(),
+                        ))
+                      ],
+                    ),
                   ),
-                  20.heightBox,
-                  // GetX<HomeController>(
-                  //builder: (controller) =>
-                  Center(
-                      child: MaterialButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    color: Theme.of(context).primaryColor,
-                    onPressed: () => controller.downloadVideo(),
-                    //controller.onDownloadVideoTapped,
-                    child: "Download Video".text.white.medium.make(),
-                  )),
-                  //),
-                  20.heightBox,
-                  Center(
-                      child: MaterialButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    color: Theme.of(context).primaryColor,
-                    onPressed: () {},
-                    child: "Download Audio".text.white.medium.make(),
-                  ))
-                ],
-              ),
+                ),
+                Visibility(
+                    visible: controller.isLoading.value,
+                    child: const Center(
+                      child: CircularProgressIndicator.adaptive(),
+                    ))
+              ],
             ),
           )),
     );
