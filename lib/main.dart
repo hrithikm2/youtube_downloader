@@ -12,9 +12,18 @@ void main() {
       debugShowCheckedModeBanner: false,
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
-      theme: ThemeData(primaryColor: const Color(0xffEA3323)).copyWith(
+      theme: ThemeData(
+        primaryColor: const Color(0xffEA3323),
+        // colorScheme: ColorScheme(primary: Colors.white,
+        // secondary: Colors.red,
+        // onPrimary: ,
+        // onSecondary:
+
+        // //)
+      ).copyWith(
           appBarTheme:
-              const AppBarTheme(elevation: 0, color: Color(0xff010101))),
+              const AppBarTheme(elevation: 0, color: Color(0xff010101)),
+          iconTheme: const IconThemeData(color: Colors.white)),
       initialBinding: SplashBinding(),
     ),
   );

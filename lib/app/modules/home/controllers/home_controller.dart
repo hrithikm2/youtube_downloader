@@ -19,6 +19,7 @@ class HomeController extends GetxController {
   File? file;
   late YoutubeExplode yt;
   Directory? directory;
+  List? availableVideoQualities;
 
   @override
   void onInit() {
