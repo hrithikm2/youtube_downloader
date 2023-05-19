@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:youtube_downloader/app/modules/story_swiper/views/story_swiper_view.dart';
 
 import '../../../components/full_screen_loader.dart';
-import '../controllers/hello.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -62,7 +62,7 @@ class HomeView extends GetView<HomeController> {
                             right: BorderSide(color: Colors.black)),
                         color: Theme.of(context).primaryColor,
                         onPressed: () {
-                          Get.to(() => const Profile());
+                          Get.to(() => StorySwiperView());
                         },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
